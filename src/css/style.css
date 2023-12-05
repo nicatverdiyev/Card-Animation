@@ -1,0 +1,55 @@
+.box-container {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+}
+.box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 300px;
+  border: 1px solid;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 1s ease-in-out;
+  background-color: yellowgreen;
+  /* & işaresi ve işareden sonrakı emr clası box olan divin 
+  hoverini ve ya before , afterini evez evir.. .box:hover veya 
+  .box:after - .box:before yaza bilerdik ayrıca*/
+  &:hover {
+    background-color: black;
+    .img {
+      transform: translateY(-100%);
+      &:first-child {
+        transform: translateY(-200px) scale(0.5);
+        /* filter: blur(5px); */
+      }
+    }
+  }
+  /* kvadratlar görünüşü */
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    inset: 10px;
+    z-index: 300;
+  }
+  &::after {
+    background-color: rgb(205, 15, 110);
+    animation: afterAnimation 3s infinite;
+  }
+  &::before {
+    background-color: rgb(15, 203, 25);
+    animation: beforeAnimation 3s infinite;
+  }
+
+  .img {
+    transition: all 1s ease-in-out;
+    min-height: 300px;
+  }
+}
